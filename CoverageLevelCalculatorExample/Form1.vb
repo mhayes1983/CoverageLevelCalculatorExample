@@ -9,13 +9,25 @@ Public Class CLCalcExample
 
 	Private Sub btnCalc_Click(sender As Object, e As EventArgs) Handles btnCalc.Click
 		Try
+			Dim strSelectedCoverageLevel As String = cmbCL.SelectedItem
+			If String.IsNullOrEmpty(strSelectedCoverageLevel) Then
+				lblResults.Text = "Please select a Coverage Level!"
+				Exit Sub
+			End If
+
+			Dim strDeductionFrequency As String = cmbDF.SelectedItem
+			If String.IsNullOrEmpty(strDeductionFrequency) Then
+				lblResults.Text = "Please select a Deduction Frequency!"
+				Exit Sub
+			End If
+
 			Dim strFilePath As String = String.Format("{0}\{1}", Path.Combine(Directory.GetCurrentDirectory(), "Data"), "Rates.xml")
 			Dim quotingModule As IQuotingModule = New QuotingModule(strFilePath)
-			Dim intCoverageLevelID As Integer = GetCoverageLevelID(cmbCL.SelectedItem)
-			Dim intDeductionFrequencyID As Integer = GetDeductionFrequencyID(cmbDF.SelectedItem)
+			Dim intCoverageLevelID As Integer = GetCoverageLevelID(strSelectedCoverageLevel)
+			Dim intDeductionFrequencyID As Integer = GetDeductionFrequencyID(strDeductionFrequency)
 			Dim dcmPremium As Decimal = quotingModule.CalculatePremiumForCoverageLevelDeductionFrequency(intCoverageLevelID, intDeductionFrequencyID)
 
-			lblResults.Text = String.Format("{0} coverage for {1} {2}", cmbCL.SelectedItem, dcmPremium.ToString("C"), cmbDF.SelectedItem)
+			lblResults.Text = String.Format("{0} coverage for {1} {2}", strSelectedCoverageLevel, dcmPremium.ToString("C"), strDeductionFrequency)
 		Catch ex As Exception
 			'For Now...
 			lblResults.Text = ex.ToString()
