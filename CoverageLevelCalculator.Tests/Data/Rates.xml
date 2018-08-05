@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Rates>
+	<CoverageLevels>
+		<CoverageLevel id="1">Employee Only</CoverageLevel>
+		<CoverageLevel id="2">Employee Plus Children</CoverageLevel>
+		<CoverageLevel id="3">Employee Plus Spouse</CoverageLevel>
+		<CoverageLevel id="4">Family</CoverageLevel>
+	</CoverageLevels>
+	<Rate coveragelevel="1" freq="12">3.75</Rate>
+	<Rate coveragelevel="2" freq="12">4.25</Rate>
+	<Rate coveragelevel="3" freq="12">4.75</Rate>
+	<Rate coveragelevel="4" freq="12">6.50</Rate>
+</Rates>
