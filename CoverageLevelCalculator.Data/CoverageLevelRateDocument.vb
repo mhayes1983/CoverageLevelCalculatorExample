@@ -8,7 +8,6 @@
 
 	Private m_coverageLevelRates As IList(Of CoverageLevelRate)
 	Private ReadOnly Property CoverageLevelRates As IList(Of CoverageLevelRate)
-
 		Get
 			If m_coverageLevelRates Is Nothing Then
 				m_coverageLevelRates = (From rate In m_ratesDocument.Root.Elements Where rate.Name = "Rate" Select New CoverageLevelRate(rate)).ToList()
