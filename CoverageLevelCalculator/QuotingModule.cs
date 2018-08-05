@@ -26,7 +26,7 @@ namespace CoverageLevelCalculator
 			ICoverageLevelRateDocument rateDocument = new CoverageLevelRateDocument(m_ratesFilePath);
 			ICoverageLevelRate rate = rateDocument.GetRateForCoverageLevel(coverageLevel);
 
-			if (!rate.Rate.HasValue)
+			if (rate == null || !rate.Rate.HasValue)
 			{
 				throw new Exception(string.Format("Unable to find rate for Coverage Level ID {0}", coverageLevel));
 			}
